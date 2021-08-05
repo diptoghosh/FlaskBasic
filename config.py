@@ -28,3 +28,7 @@ class Config:
     # SQLALCHEMY_DATABASE_URI = 'mysql://' + username + ':' + password + '@' + server + '/' + db
     # SQLALCHEMY_ECHO = False
     # SQLALCHEMY_TRACK_MODIFICATIONS = False
+    
+    MQTT_BROKER_URL = 'mqtt.eclipseprojects.io'
+    MQTT_BROKER_PORT = 1883
+    MQTT_REFRESH_TIME = 1.0
