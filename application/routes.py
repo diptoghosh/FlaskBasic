@@ -3,7 +3,7 @@ from datetime import datetime
 from application import app, db, mqtt, socketio
 from .models import ContactMe
 
-@app.route('/testapi', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def index():
     message = ''
     if request.method == 'POST':
@@ -17,12 +17,11 @@ def index():
             return repr(e)
     return render_template('index.html', message=message)
 
-@app.route('/', methods=['GET', 'POST'])
 @app.route('/tools', methods=['GET','POST'])
 def tools():
     return render_template('tools.html')
 
-@app.route('/testlinks', methods=['GET','POST'])
+@app.route('/links', methods=['GET','POST'])
 def links():
     return render_template('links.html')
 
