@@ -24,3 +24,17 @@ def tools():
 @app.route('/links', methods=['GET','POST'])
 def links():
     return render_template('links.html')
+
+@mqtt.on_connect()
+def handle_connect(client, userdata, flags, rc):
+    mqtt.subscribe('house/sensor_data')
+
+@mqtt.on_message()
+def handle_mqtt_message(client, userdata, message):
+    data = dict(
+        topic=message.topic,
+        payload=message.payload.decode()
+    )
+    print(f'Received: {data["payload"]}')
+    # emit a mqtt_message event to the socket containing the message data
+    socketio.emit('mqtt_message', data=data)
