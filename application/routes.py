@@ -1,6 +1,6 @@
 from flask import request, render_template, redirect, send_file
 from datetime import datetime
-from application import app, db
+from application import app, db, mqtt, socketio
 from .models import ContactMe
 
 @app.route('/', methods=['GET', 'POST'])
